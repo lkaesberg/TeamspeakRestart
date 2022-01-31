@@ -3,14 +3,12 @@ var router = express.Router();
 const {execSync} = require("child_process");
 
 
-const getStatus = () => {
+module.exports.getStatus = getStatus = function () {
     try {
-        let res = execSync("systemctl status ts3.service | grep Active").toString()
-        console.log(res)
+        let res = execSync("service ts3 status | grep Active").toString()
         return res.includes("active");
 
     } catch (err) {
-        console.log(err)
         return false
     }
 }
@@ -18,6 +16,4 @@ const getStatus = () => {
 router.get('/', function (req, res, next) {
     res.send(getStatus().toString());
 });
-
-module.exports.getStatus = getStatus
-module.exports = router;
+module.exports.statusRouter = router;
