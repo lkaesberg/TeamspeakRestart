@@ -17,6 +17,7 @@ function reloadServerStatus() {
 }
 
 reloadServerStatus()
+status.textContent = "Status: Loading"
 reloadButton.addEventListener('click', function (e) {
     reloadServerStatus()
 })
