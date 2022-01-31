@@ -5,7 +5,7 @@ const {execSync} = require("child_process");
 
 const getStatus = () => {
     try {
-        let res = execSync("systemctl status ts3.service | grep Active")
+        let res = execSync("systemctl status ts3.service | grep Active").toString()
         console.log(res)
         return res.includes("active");
 
