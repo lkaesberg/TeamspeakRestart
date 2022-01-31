@@ -7,9 +7,7 @@ restartButton.addEventListener('click', function (e) {
 
 function reloadServerStatus() {
     fetch("/status").then(response => response.json()).then(data => {
-        console.log(data)
-        console.log(data === "true")
-        if (data === "true") {
+        if (data) {
             status.textContent = "Status: Active"
         } else {
             status.textContent = "Status: Inactive"

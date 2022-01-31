@@ -4,9 +4,11 @@ const router = express.Router();
 const {execSync} = require("child_process");
 
 router.get('/', function (req, res, next) {
-    if (!getStatus) {
+    let status = getStatus()
+    console.log(status)
+    if (status) {
         try {
-            execSync("service ts3 restart")
+            //execSync("service ts3 restart")
             res.send(true.toString())
         } catch (e) {
         }
